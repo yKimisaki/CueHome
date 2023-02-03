@@ -19,11 +19,12 @@ namespace CueHome.Models
 
         private List<Item> itemBox = new();
         private List<Item> additionalItems = new();
+        private List<Item> defaultItems = new();
 
         /// <summary>
         /// 最初に予め追加されているアイテム
         /// </summary>
-        public Item[] DefaultItems { get; }
+        public IReadOnlyList<Item> DefaultItems => defaultItems;
 
         /// <summary>
         /// 
@@ -35,7 +36,7 @@ namespace CueHome.Models
             model = _model;
 
             AllCharacters = model.Characters.Select(x => new Item(x)).ToArray();
-            DefaultItems = model.Items.Take(4).ToArray();
+            defaultItems = model.Items.Take(4).Select(x => Item.Instantiate(x)).ToList();
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace CueHome.Models
         /// <param name="item"></param>
         public void AddItem(Item item)
         {
-            additionalItems.Add(item);
+            additionalItems.Add(Item.Instantiate(item));
         }
 
         /// <summary>
@@ -53,7 +54,14 @@ namespace CueHome.Models
         /// <param name="item"></param>
         public void RemoveItem(Item item)
         {
+            if (!item.IsBreakable)
+                return;
+
+            item.Break();
+
             additionalItems.Remove(item);
+            // 初期アイテムも壊れるものは消す
+            defaultItems.Remove(item);
         }
 
         /// <summary>
@@ -88,6 +96,7 @@ namespace CueHome.Models
         private IEnumerable<Item> CurrentAllItems =>
             AllCharacters
                 .Where(x => !x.Character.IsRetired)
+                // 由良桐香は原作でも途中で消えるので消す
                 .Concat(DefaultItems.Where(x => x.Name != Name.由良桐香 || model.Year < 3))
                 .Concat(additionalItems);
     }

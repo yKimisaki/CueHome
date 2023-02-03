@@ -35,6 +35,10 @@ namespace CueHome.Models
         /// 支払日の報酬で手に入るアイテムかどうか
         /// </summary>
         public bool IsReward { get; }
+        /// <summary>
+        /// アイテムが破壊されたかどうか
+        /// </summary>
+        public bool IsBroken { get; private set; } = false;
 
         /// <summary>
         /// 
@@ -84,6 +88,22 @@ namespace CueHome.Models
             {
                 Effect.Effect(this, currentX, currentY, model);
             }
+        }
+
+        /// <summary>
+        /// このアイテムを破壊扱いにします。
+        /// </summary>
+        public void Break()
+        {
+            IsBroken = true;
+        }
+
+        public static Item Instantiate(Item original)
+        {
+            if (original.Character is not null)
+                return new Item(original.Character);
+            else
+                return new Item(original.Name, original.Effect, original.Group, original.IsBreakable, original.IsReward);
         }
     }
 }

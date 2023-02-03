@@ -32,6 +32,7 @@ namespace CueHome.Presenters
         /// <summary>
         /// このマスのアイテムが効果を及ぼしたアイテム一覧
         /// </summary>
+        public Item CurrentItem => model.CurrentItem;
         public IEnumerable<Item> LatestTargetItems => model.CurrentItem?.Effect?.LatestTargetItems ?? Array.Empty<Item>();
 
         /// <summary>

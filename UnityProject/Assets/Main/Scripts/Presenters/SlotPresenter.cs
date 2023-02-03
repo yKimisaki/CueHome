@@ -46,6 +46,11 @@ namespace CueHome.Presenters
                 if (slotElement.LatestTargetItems.Any())
                     slotElement.ShowEffectAction();
             }
+
+            foreach (var slotElement in SlotElements.Where(x => x.CurrentItem?.IsBroken ?? false))
+            {
+                slotElement.ShowEffectAction();
+            }
         }
     }
 }

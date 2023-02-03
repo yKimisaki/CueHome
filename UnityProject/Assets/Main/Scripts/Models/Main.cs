@@ -51,7 +51,8 @@ namespace CueHome.Models
             new Item(Name.金フォト, ItemEffect.Get周囲のキャラにコイン追加(75, true), 1, true, true),
             new Item(Name.はちみつジンジャーティー, ItemEffect.Get周囲のキャラにコイン追加(5, false),1,  true, true),
             new Item(Name.はちみつヨーグルト, ItemEffect.Get周囲のキャラにコイン追加(50, true), 1, true, true),
-            new Item(Name.いなりずし, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希), 3, true, true),
+            // new Item(Name.いなりずし, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希), 3, true, true),
+            new Item(Name.恵庭巻き, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希), 3, true, true),
             new Item(Name.亀井さん, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.六石陽菜), 2, true, true),
             new Item(Name.ケチャップ, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.赤川千紗, Name.丸山利恵), 3, true, true),
             new Item(Name.黒猫, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.六石陽菜, Name.神室絢, Name.明神凛音), 3, true, true),
@@ -77,6 +78,9 @@ namespace CueHome.Models
             new Item(Name.おもちゃ, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希, Name.恵庭あいり, Name.明神凛音), 2, true, true),
             new Item(Name.小説, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.宇津木聡里), 2, true, true),
             new Item(Name.めがね, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.宮路まほろ, Name.宇津木聡里),2,  true, true),
+            new Item(Name.へそくり貯金箱, ItemEffect.Get貯金箱(x => x.Year * 70), 1, true, true),
+            new Item(Name.金の貯金箱, ItemEffect.Get貯金箱(_ => 250), 1, true, true),
+            new Item(Name.虹の貯金箱, ItemEffect.Get貯金箱(_ => 500), 1, true, true),
         };
 
         /// <summary>
@@ -154,15 +158,6 @@ namespace CueHome.Models
                     IsRequiredRenewal = true;
                 }
             }
-        }
-
-        /// <summary>
-        /// アイテムを取得します。
-        /// </summary>
-        /// <param name="item"></param>
-        public void GetItem(Item item)
-        {
-            ItemRepository.AddItem(item);
         }
 
         /// <summary>

@@ -83,6 +83,10 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 7de21538258f90a4a934d0360d514084, type: 3}
     - {fileID: 2800000, guid: 0014060fe56cee844b8a4494f418c42a, type: 3}
     - {fileID: 2800000, guid: b47edfc86d40adc4089ff4e060113e95, type: 3}
+    - {fileID: 2800000, guid: 59267059734a72b4ba6347c2041e885f, type: 3}
+    - {fileID: 2800000, guid: 382ea26e68c089a4c80d7efe0c04ddc3, type: 3}
+    - {fileID: 2800000, guid: 12e564e365e23344dae817fbeea44de3, type: 3}
+    - {fileID: 2800000, guid: c37a84e56b822054389f63c62ea27da7, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -101,12 +105,14 @@ SpriteAtlas:
     - 22468d72911c59041903107797772fc5: 21300000
     - da15dd823f6a96a4b8e365725c90fdc6: 21300000
     - 078b909292646154281369bdade5da98: 21300000
+    - 12e564e365e23344dae817fbeea44de3: 21300000
     - de025664404acff48bf3634951ba6ebe: 21300000
     - 6210476440184cb47a9f147b8c6a3c74: 21300000
     - 0075c88472fc49146806a42150bbd812: 21300000
     - 04a3be05b10b8d54ebe3428dad68639f: 21300000
     - 60d6f445ed50dc447aa0dd3822257c17: 21300000
     - 1ea40285af8994247a74ee3f2a0a07c3: 21300000
+    - c37a84e56b822054389f63c62ea27da7: 21300000
     - 374421468ff89694abd5946225d1f12b: 21300000
     - e0eba656dbfa9464f9cfce002141e7c8: 21300000
     - a4528876213351546a711c8293ca8bb8: 21300000
@@ -123,6 +129,7 @@ SpriteAtlas:
     - 832343883eed4354a92ae0d2b1f34d08: 21300000
     - b47edfc86d40adc4089ff4e060113e95: 21300000
     - e1386f49832fa1846a205d315fc10ad5: 21300000
+    - 59267059734a72b4ba6347c2041e885f: 21300000
     - 059fd359458965948b636435db906e6c: 21300000
     - 87db5e693e94f384fa2d3470eaaf87c6: 21300000
     - 82475889826acd243834fa8e70eb39e3: 21300000
@@ -135,6 +142,7 @@ SpriteAtlas:
     - 3e710a1e57a15d64e8290b13e284036d: 21300000
     - fe96814e01b249646aa45ea0313f383d: 21300000
     - 8091bb4e08aa1a64293f07fe7fbb50d8: 21300000
+    - 382ea26e68c089a4c80d7efe0c04ddc3: 21300000
     - 54548bceff44b344b9af9e716f2233d6: 21300000
     - 0014060fe56cee844b8a4494f418c42a: 21300000
     - d9c0a11fccda3d6439afaa36b32de031: 21300000
@@ -154,12 +162,14 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 22468d72911c59041903107797772fc5, type: 3}
   - {fileID: 21300000, guid: da15dd823f6a96a4b8e365725c90fdc6, type: 3}
   - {fileID: 21300000, guid: 078b909292646154281369bdade5da98, type: 3}
+  - {fileID: 21300000, guid: 12e564e365e23344dae817fbeea44de3, type: 3}
   - {fileID: 21300000, guid: de025664404acff48bf3634951ba6ebe, type: 3}
   - {fileID: 21300000, guid: 6210476440184cb47a9f147b8c6a3c74, type: 3}
   - {fileID: 21300000, guid: 0075c88472fc49146806a42150bbd812, type: 3}
   - {fileID: 21300000, guid: 04a3be05b10b8d54ebe3428dad68639f, type: 3}
   - {fileID: 21300000, guid: 60d6f445ed50dc447aa0dd3822257c17, type: 3}
   - {fileID: 21300000, guid: 1ea40285af8994247a74ee3f2a0a07c3, type: 3}
+  - {fileID: 21300000, guid: c37a84e56b822054389f63c62ea27da7, type: 3}
   - {fileID: 21300000, guid: 374421468ff89694abd5946225d1f12b, type: 3}
   - {fileID: 21300000, guid: e0eba656dbfa9464f9cfce002141e7c8, type: 3}
   - {fileID: 21300000, guid: a4528876213351546a711c8293ca8bb8, type: 3}
@@ -176,6 +186,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 832343883eed4354a92ae0d2b1f34d08, type: 3}
   - {fileID: 21300000, guid: b47edfc86d40adc4089ff4e060113e95, type: 3}
   - {fileID: 21300000, guid: e1386f49832fa1846a205d315fc10ad5, type: 3}
+  - {fileID: 21300000, guid: 59267059734a72b4ba6347c2041e885f, type: 3}
   - {fileID: 21300000, guid: 059fd359458965948b636435db906e6c, type: 3}
   - {fileID: 21300000, guid: 87db5e693e94f384fa2d3470eaaf87c6, type: 3}
   - {fileID: 21300000, guid: 82475889826acd243834fa8e70eb39e3, type: 3}
@@ -188,6 +199,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 3e710a1e57a15d64e8290b13e284036d, type: 3}
   - {fileID: 21300000, guid: fe96814e01b249646aa45ea0313f383d, type: 3}
   - {fileID: 21300000, guid: 8091bb4e08aa1a64293f07fe7fbb50d8, type: 3}
+  - {fileID: 21300000, guid: 382ea26e68c089a4c80d7efe0c04ddc3, type: 3}
   - {fileID: 21300000, guid: 54548bceff44b344b9af9e716f2233d6, type: 3}
   - {fileID: 21300000, guid: 0014060fe56cee844b8a4494f418c42a, type: 3}
   - {fileID: 21300000, guid: d9c0a11fccda3d6439afaa36b32de031, type: 3}
@@ -206,12 +218,14 @@ SpriteAtlas:
   - yakuroto
   - stick
   - honey_yogurt
+  - gold_bank
   - kuroneko
   - fude
   - rinne
   - rio
   - miharu
   - gameboy
+  - rainbow_bank
   - kameisan
   - inarizusi
   - ketchup
@@ -228,6 +242,7 @@ SpriteAtlas:
   - music_box
   - rp_candy
   - honey_ginger_tea
+  - eniwamaki
   - aya
   - meat
   - dictionary
@@ -240,6 +255,7 @@ SpriteAtlas:
   - reset_hammer
   - haruna
   - sneaker
+  - bank
   - azarasi
   - grass
   - honoka

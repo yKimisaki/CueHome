@@ -72,6 +72,10 @@ namespace CueHome.Data
             {Name.おもちゃ, "Textures/hobby"},
             {Name.小説, "Textures/novel"},
             {Name.めがね, "Textures/grass"},
+            {Name.恵庭巻き, "Textures/eniwamaki"},
+            {Name.へそくり貯金箱, "Textures/bank"},
+            {Name.金の貯金箱, "Textures/gold_bank"},
+            {Name.虹の貯金箱, "Textures/rainbow_bank"},
         };
     }
 }

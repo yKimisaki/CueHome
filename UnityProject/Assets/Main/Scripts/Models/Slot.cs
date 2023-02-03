@@ -64,7 +64,13 @@ namespace CueHome.Models
 
             for (int x = 0; x < XLength; x++)
                 for (int y = 0; y < YLength; ++y)
-                    slotElements[x, y].CurrentItem?.OnLot(x, y, model);
+                {
+                    var item = slotElements[x, y].CurrentItem;
+                    if (item is null)
+                        continue;
+
+                    item.OnLot(x, y, model);
+                }
 
             foreach (var character in model.Characters)
                 character.CommitPendingCoinAmount();

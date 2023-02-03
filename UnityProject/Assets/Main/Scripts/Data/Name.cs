@@ -65,5 +65,9 @@ namespace CueHome.Data
         public const string おもちゃ = nameof(おもちゃ);
         public const string 小説 = nameof(小説);
         public const string めがね = nameof(めがね);
+        public const string 恵庭巻き = nameof(恵庭巻き);
+        public const string へそくり貯金箱 = nameof(へそくり貯金箱);
+        public const string 金の貯金箱 = nameof(金の貯金箱);
+        public const string 虹の貯金箱 = nameof(虹の貯金箱);
     }
 }

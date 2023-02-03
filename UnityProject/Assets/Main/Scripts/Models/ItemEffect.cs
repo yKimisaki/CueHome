@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 
 namespace CueHome.Models
 {
@@ -15,6 +16,7 @@ namespace CueHome.Models
         周囲の特定のキャラにコイン追加,
         周囲のアイテムを破壊,
         周囲のキャラの稼ぎを倍にする,
+        貯金箱,
     }
 
     /// <summary>
@@ -87,6 +89,7 @@ namespace CueHome.Models
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="getEffectValue"></param>
         /// <param name="isInstant"></param>
         /// <returns></returns>
         public static ItemEffect Get周囲のキャラの稼ぎを倍にする(Func<Main, int> getEffectValue, bool isInstant)
@@ -97,23 +100,37 @@ namespace CueHome.Models
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="getEffectValue"></param>
+        /// <returns></returns>
+        public static ItemEffect Get貯金箱(Func<Main, int> getEffectValue)
+        {
+            return new ItemEffect(EffectType.貯金箱, getEffectValue, Array.Empty<string>(), false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public string GetDescription(string name, Main model)
         {
             if (name == Name.思い出のオルゴール)
                 return $"周囲の声優の稼ぎを経過年数倍にする。(アイテムの効果による獲得コインは対象外。)\nこのアイテムは2つ以上保持できない。";
-            else
+            if (name == Name.へそくり貯金箱)
+                return $"リセットハンマーで壊されたとき、登場中の全声優の獲得コインが 経過年数x70 増える。";
+
+            return (Type switch
             {
-                return (Type switch
-                {
-                    EffectType.全キャラにコイン追加 => $"登場中の全声優の獲得コインが {getEffectValue(model)} 増える。",
-                    EffectType.周囲のキャラにコイン追加 => $"周囲の声優の獲得コインが {getEffectValue(model)} 増える。",
-                    EffectType.周囲の特定のキャラにコイン追加 => $"周囲の {args.Aggregate((x, y) => x + "、" + y)} の獲得コインが {getEffectValue(model)} 増える。",
-                    EffectType.周囲のアイテムを破壊 => $"周囲のアイテムを消す。",
-                    EffectType.周囲のキャラの稼ぎを倍にする => $"周囲の声優の稼ぎを {getEffectValue(model)} 倍にする。(アイテムの効果による獲得コインは対象外。)",
-                    _ => "",
-                })
-                + (isInstant ? "\n効果があった場合、このアイテムは消える。" : "");
-            }
+                EffectType.全キャラにコイン追加 => $"登場中の全声優の獲得コインが {getEffectValue(model)} 増える。",
+                EffectType.周囲のキャラにコイン追加 => $"周囲の声優の獲得コインが {getEffectValue(model)} 増える。",
+                EffectType.周囲の特定のキャラにコイン追加 => $"周囲の {args.Aggregate((x, y) => x + "、" + y)} の獲得コインが {getEffectValue(model)} 増える。",
+                EffectType.周囲のアイテムを破壊 => $"周囲のアイテムを消す。",
+                EffectType.周囲のキャラの稼ぎを倍にする => $"周囲の声優の稼ぎを {getEffectValue(model)} 倍にする。(アイテムの効果による獲得コインは対象外。)",
+                EffectType.貯金箱 => $"リセットハンマーで壊されたとき、登場中の全声優の獲得コインが {getEffectValue(model)} 増える。",
+                _ => "",
+            })
+            + (isInstant ? "\n効果があった場合、このアイテムは消える。" : "");
         }
 
         /// <summary>
@@ -129,22 +146,14 @@ namespace CueHome.Models
             switch (Type)
             {
                 case EffectType.全キャラにコイン追加:
-                    for (var x = 0; x < Slot.XLength; ++x)
-                        for (var y = 0; y < Slot.YLength; ++y)
-                        {
-                            var targetItem = model.Slot.GetElement(x, y).CurrentItem;
-                            var targetCharacter = targetItem?.Character;
-                            if (targetCharacter is not null)
-                            {
-                                targetCharacter.AddPendingCoinAmount(getEffectValue(model));
-                                latestTargetItems.Add(targetItem);
-                            }
-                        }
+                    latestTargetItems.AddRange(全キャラにコインを追加(getEffectValue, model));
                     break;
                 case EffectType.周囲のキャラにコイン追加:
                     for (var x = currentX - 1; x <= currentX + 1; ++x)
                         for (var y = currentY - 1; y <= currentY + 1; ++y)
                         {
+                            if (x == 0 && y == 0)
+                                continue;
                             if (x < 0 || x >= Slot.XLength)
                                 continue;
                             if (y < 0 || y >= Slot.YLength)
@@ -163,6 +172,8 @@ namespace CueHome.Models
                     for (var x = currentX - 1; x <= currentX + 1; ++x)
                         for (var y = currentY - 1; y <= currentY + 1; ++y)
                         {
+                            if (x == 0 && y == 0)
+                                continue;
                             if (x < 0 || x >= Slot.XLength)
                                 continue;
                             if (y < 0 || y >= Slot.YLength)
@@ -181,6 +192,8 @@ namespace CueHome.Models
                     for (var x = currentX - 1; x <= currentX + 1; ++x)
                         for (var y = currentY - 1; y <= currentY + 1; ++y)
                         {
+                            if (x == currentX && y == currentY)
+                                continue;
                             if (x < 0 || x >= Slot.XLength)
                                 continue;
                             if (y < 0 || y >= Slot.YLength)
@@ -193,11 +206,22 @@ namespace CueHome.Models
                                 latestTargetItems.Add(targetItem);
                             }
                         }
+                    // 破壊時に効果を発動するアイテム
+                    foreach(var targetItem in latestTargetItems)
+                        if (targetItem.Effect is not null)
+                            switch (targetItem.Effect.Type)
+                            {
+                                case EffectType.貯金箱:
+                                    全キャラにコインを追加(targetItem.Effect.getEffectValue, model);
+                                    break;
+                            }
                     break;
                 case EffectType.周囲のキャラの稼ぎを倍にする:
                     for (var x = currentX - 1; x <= currentX + 1; ++x)
                         for (var y = currentY - 1; y <= currentY + 1; ++y)
                         {
+                            if (x == 0 && y == 0)
+                                continue;
                             if (x < 0 || x >= Slot.XLength)
                                 continue;
                             if (y < 0 || y >= Slot.YLength)
@@ -220,6 +244,23 @@ namespace CueHome.Models
 
             if (latestTargetItems.Any() && isInstant)
                 model.ItemRepository.RemoveItem(original);
+        }
+
+        private static IEnumerable<Item> 全キャラにコインを追加(Func<Main, int> getEffectValue, Main model)
+        {
+            var targetItems = new List<Item>();
+            for (var x = 0; x < Slot.XLength; ++x)
+                for (var y = 0; y < Slot.YLength; ++y)
+                {
+                    var targetItem = model.Slot.GetElement(x, y).CurrentItem;
+                    var targetCharacter = targetItem?.Character;
+                    if (targetCharacter is not null)
+                    {
+                        targetCharacter.AddPendingCoinAmount(getEffectValue(model));
+                        targetItems.Add(targetItem);
+                    }
+                }
+            return targetItems;
         }
     }
 }
