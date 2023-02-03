@@ -40,28 +40,43 @@ namespace CueHome.Models
         /// </summary>
         public IReadOnlyList<Item> Items { get; } = new[]
         {
-            new Item(Name.鳳真咲, ItemEffect.Get全キャラにコイン追加(5, false), true, false),
-            new Item(Name.由良桐香, ItemEffect.Get全キャラにコイン追加(3, false), true, false),
-            new Item(Name.五十鈴りお, ItemEffect.Get全キャラにコイン追加(2, false), true, false),
+            new Item(Name.鳳真咲, ItemEffect.Get全キャラにコイン追加(5, false),0, false, false),
+            new Item(Name.由良桐香, ItemEffect.Get周囲のキャラの稼ぎを倍にする(_ => 2, false), 0, false, false),
+            new Item(Name.五十鈴りお, ItemEffect.Get周囲のキャラにコイン追加(5, false), 0, false, false),
+            new Item(Name.思い出のオルゴール, ItemEffect.Get周囲のキャラの稼ぎを倍にする(x => x.Year, false),0,  true, false),
 
-            new Item(Name.あざらし, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鹿野志穂), true, true),
-            new Item(Name.サイコロ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.九条柚葉, Name.明神凛音), true, true),
-            new Item(Name.ふで, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鹿野志穂), true, true),
-            new Item(Name.金フォト, ItemEffect.Get周囲のマスにコイン追加(30, true), true, true),
-            new Item(Name.はちみつジンジャーティー, ItemEffect.Get周囲のマスにコイン追加(3, false), true, true),
-            new Item(Name.はちみつヨーグルト, ItemEffect.Get周囲のマスにコイン追加(20, true), true, true),
-            new Item(Name.いなりずし, ItemEffect.Get周囲の特定のキャラにコイン追加(30, true, Name.天童悠希), true, true),
-            new Item(Name.亀井さん, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.六石陽菜), true, true),
-            new Item(Name.ケチャップ, ItemEffect.Get周囲の特定のキャラにコイン追加(30, true, Name.赤川千紗, Name.丸山利恵), true, true),
-            new Item(Name.黒猫, ItemEffect.Get周囲の特定のキャラにコイン追加(20, true, Name.神室絢), true, true),
-            new Item(Name.LPゼリー, ItemEffect.Get周囲のマスにコイン追加(10, true), true, true),
-            new Item(Name.PCパーツ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.遠見鳴), true, true),
-            new Item(Name.ラジオマイク, ItemEffect.Get周囲の特定のキャラにコイン追加(3, false, Name.夜峰美晴, Name.神室絢, Name.日名倉莉子, Name.宮路まほろ), true, true),
-            new Item(Name.虹フォト, ItemEffect.Get周囲のマスにコイン追加(50, true), true, true),
-            new Item(Name.リセットハンマー, ItemEffect.Get周囲のアイテムを破壊(true), true, true),
-            new Item(Name.晩酌, ItemEffect.Get周囲の特定のキャラにコイン追加(15, true,  Name.夜峰美晴, Name.日名倉莉子, Name.宮路まほろ), true, true),
-            new Item(Name.ステッキ, ItemEffect.Get周囲の特定のキャラにコイン追加(15, true,  Name.恵庭あいり, Name.赤川千紗), true, true),
-            new Item(Name.ヤクロト, ItemEffect.Get周囲の特定のキャラにコイン追加(10, true,  Name.丸山利恵), true, true),
+            new Item(Name.あざらし, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鹿野志穂), 2, true, true),
+            new Item(Name.サイコロ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.九条柚葉, Name.明神凛音), 2, true, true),
+            new Item(Name.ふで, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鹿野志穂), 2, true, true),
+            new Item(Name.金フォト, ItemEffect.Get周囲のキャラにコイン追加(75, true), 1, true, true),
+            new Item(Name.はちみつジンジャーティー, ItemEffect.Get周囲のキャラにコイン追加(5, false),1,  true, true),
+            new Item(Name.はちみつヨーグルト, ItemEffect.Get周囲のキャラにコイン追加(50, true), 1, true, true),
+            new Item(Name.いなりずし, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希), 3, true, true),
+            new Item(Name.亀井さん, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.六石陽菜), 2, true, true),
+            new Item(Name.ケチャップ, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.赤川千紗, Name.丸山利恵), 3, true, true),
+            new Item(Name.黒猫, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.六石陽菜, Name.神室絢, Name.明神凛音), 3, true, true),
+            new Item(Name.LPゼリー, ItemEffect.Get全キャラにコイン追加(20, true), 1,  true, true),
+            new Item(Name.RPのど飴, ItemEffect.Get全キャラにコイン追加(3, false), 1,  true, true),
+            new Item(Name.PCパーツ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.遠見鳴), 2, true, true),
+            new Item(Name.ラジオマイク, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.夜峰美晴, Name.神室絢, Name.日名倉莉子, Name.宮路まほろ), 2, true, true),
+            new Item(Name.虹フォト, ItemEffect.Get周囲のキャラにコイン追加(120, true), 1, true, true),
+            new Item(Name.リセットハンマー, ItemEffect.Get周囲のアイテムを破壊(true), 1, true, true),
+            new Item(Name.晩酌, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true,  Name.夜峰美晴, Name.日名倉莉子, Name.宮路まほろ), 3, true, true),
+            new Item(Name.ステッキ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false,  Name.恵庭あいり, Name.赤川千紗), 2, true, true),
+            new Item(Name.ヤクロト, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true,  Name.丸山利恵), 3, true, true),
+            new Item(Name.お肉, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true,  Name.六石陽菜, Name.宇津木聡里), 3, true, true),
+            new Item(Name.ラーメン, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true,  Name.鷹取舞花, Name.宮路まほろ), 3, true, true),
+            new Item(Name.入浴剤, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.月居ほのか, Name.天童悠希, Name.丸山利恵), 3, true, true),
+            new Item(Name.お弁当, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.六石陽菜, Name.天童悠希, Name.神室絢), 3, true, true),
+            new Item(Name.英英辞書, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.九条柚葉, Name.遠見鳴), 2, true, true),
+            new Item(Name.喫茶店の制服, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.赤川千紗, Name.丸山利恵), 2, true, true),
+            new Item(Name.お守り, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.恵庭あいり), 2, true, true),
+            new Item(Name.ゲーム機, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鷹取舞花, Name.遠見鳴), 2, true, true),
+            new Item(Name.スニーカー, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.鷹取舞花, Name.月居ほのか, Name.日名倉莉子), 2, true, true),
+            new Item(Name.カメラ, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.明神凛音), 2, true, true),
+            new Item(Name.おもちゃ, ItemEffect.Get周囲の特定のキャラにコイン追加(50, true, Name.天童悠希, Name.恵庭あいり, Name.明神凛音), 2, true, true),
+            new Item(Name.小説, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.宇津木聡里), 2, true, true),
+            new Item(Name.めがね, ItemEffect.Get周囲の特定のキャラにコイン追加(5, false, Name.宮路まほろ, Name.宇津木聡里),2,  true, true),
         };
 
         /// <summary>
@@ -100,7 +115,7 @@ namespace CueHome.Models
         /// </summary>
         public Main()
         {
-            ItemRepository = new ItemRepository(Characters, Items.Take(3));
+            ItemRepository = new ItemRepository(this);
             Slot = new Slot(this);
         }
 
@@ -155,7 +170,7 @@ namespace CueHome.Models
         /// </summary>
         public void Pay()
         {
-            foreach(var character in Characters)
+            foreach (var character in Characters)
                 if (!character.IsRetired)
                     character.TryPayCoinAmount(this, true);
             IsRequiredPayment = false;
@@ -186,12 +201,16 @@ namespace CueHome.Models
             3 => 100,
             4 => 150,
             5 => 200,
-            6 => 300,
-            7 => 400,
-            8 => 500,
-            9 => 750,
-            10 => 1000,
-            _ => 2000,
+            6 => 250,
+            7 => 300,
+            8 => 350,
+            9 => 400,
+            10 => 500,
+            11 => 600,
+            12 => 700,
+            13 => 800,
+            14 => 900,
+            _ => 1000,
         };
     }
 }

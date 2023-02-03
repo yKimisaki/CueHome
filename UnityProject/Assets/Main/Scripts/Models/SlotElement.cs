@@ -1,5 +1,4 @@
 ﻿
-
 namespace CueHome.Models
 {
     /// <summary>
@@ -31,7 +30,7 @@ namespace CueHome.Models
         {
             if (index < 16)
                 CurrentItem = itemRepository.AllCharacters[index];
-            else if (index < 19)
+            else if (index < 20)
                 CurrentItem = itemRepository.DefaultItems[index - 16];
         }
 

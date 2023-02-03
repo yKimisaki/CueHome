@@ -14,6 +14,10 @@ namespace CueHome.Models
         /// このアイテムの効果を取得します。
         /// </summary>
         public ItemEffect Effect { get; }
+        /// <summary>
+        /// このアイテムの効果を取得します。
+        /// </summary>
+        public int Group { get; }
 
         /// <summary>
         /// アイテム名
@@ -51,9 +55,10 @@ namespace CueHome.Models
         /// <param name="effect"></param>
         /// <param name="isBreakable"></param>
         /// <param name="isReward"></param>
-        public Item(string name, ItemEffect effect, bool isBreakable, bool isReward)
+        public Item(string name, ItemEffect effect, int group, bool isBreakable, bool isReward)
         {
             Effect = effect;
+            Group = group;
 
             Name = name;
             IconPath = Data.IconPath.ItemByName[Name];

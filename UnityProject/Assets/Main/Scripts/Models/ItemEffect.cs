@@ -1,32 +1,41 @@
-﻿using System;
+﻿using CueHome.Data;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CueHome.Models
 {
     /// <summary>
+    /// アイテムの効果タイプを表します。
+    /// </summary>
+    public enum EffectType
+    {
+        全キャラにコイン追加,
+        周囲のキャラにコイン追加,
+        周囲の特定のキャラにコイン追加,
+        周囲のアイテムを破壊,
+        周囲のキャラの稼ぎを倍にする,
+    }
+
+    /// <summary>
     /// アイテムの効果を表します。
     /// </summary>
     public class ItemEffect
     {
-        private enum EffectType
-        {
-            全キャラにコイン追加,
-            周囲のマスにコイン追加,
-            周囲の特定のキャラにコイン追加,
-            周囲のアイテムを破壊,
-        }
-
-        private EffectType type;
-        private int effectValue;
+        public EffectType Type { get; }
+        private Func<Main, int> getEffectValue;
         private string[] args;
 
         // 効果があったら壊れるアイテムかどうか
         private bool isInstant;
 
-        private ItemEffect(EffectType _type, int _effectValue, string[] _args, bool _isInstant)
+        public List<Item> latestTargetItems = new();
+        public IEnumerable<Item> LatestTargetItems => latestTargetItems;
+
+        private ItemEffect(EffectType _type, Func<Main, int> _getEffectValue, string[] _args, bool _isInstant)
         {
-            type = _type;
-            effectValue = _effectValue;
+            Type = _type;
+            getEffectValue = _getEffectValue;
             args = _args;
             isInstant = _isInstant;
         }
@@ -39,7 +48,7 @@ namespace CueHome.Models
         /// <returns></returns>
         public static ItemEffect Get全キャラにコイン追加(int effectCoinAmount, bool isInstant)
         {
-            return new ItemEffect(EffectType.全キャラにコイン追加, effectCoinAmount, Array.Empty<string>(), isInstant);
+            return new ItemEffect(EffectType.全キャラにコイン追加, _ => effectCoinAmount, Array.Empty<string>(), isInstant);
         }
 
         /// <summary>
@@ -48,9 +57,9 @@ namespace CueHome.Models
         /// <param name="effectCoinAmount"></param>
         /// <param name="isInstant"></param>
         /// <returns></returns>
-        public static ItemEffect Get周囲のマスにコイン追加(int effectCoinAmount, bool isInstant)
+        public static ItemEffect Get周囲のキャラにコイン追加(int effectCoinAmount, bool isInstant)
         {
-            return new ItemEffect(EffectType.周囲のマスにコイン追加, effectCoinAmount, Array.Empty<string>(), isInstant);
+            return new ItemEffect(EffectType.周囲のキャラにコイン追加, _ => effectCoinAmount, Array.Empty<string>(), isInstant);
         }
 
         /// <summary>
@@ -62,7 +71,7 @@ namespace CueHome.Models
         /// <returns></returns>
         public static ItemEffect Get周囲の特定のキャラにコイン追加(int effectCoinAmount, bool isInstant, params string[] args)
         {
-            return new ItemEffect(EffectType.周囲の特定のキャラにコイン追加, effectCoinAmount, args, isInstant);
+            return new ItemEffect(EffectType.周囲の特定のキャラにコイン追加, _ => effectCoinAmount, args, isInstant);
         }
 
         /// <summary>
@@ -72,21 +81,40 @@ namespace CueHome.Models
         /// <returns></returns>
         public static ItemEffect Get周囲のアイテムを破壊(bool isInstant)
         {
-            return new ItemEffect(EffectType.周囲のアイテムを破壊, 0, Array.Empty<string>(), isInstant);
+            return new ItemEffect(EffectType.周囲のアイテムを破壊, _ => 0, Array.Empty<string>(), isInstant);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Description => (type switch
+        /// <param name="isInstant"></param>
+        /// <returns></returns>
+        public static ItemEffect Get周囲のキャラの稼ぎを倍にする(Func<Main, int> getEffectValue, bool isInstant)
         {
-            EffectType.全キャラにコイン追加 => $"登場中の全声優の獲得コインが {effectValue} 増える。",
-            EffectType.周囲のマスにコイン追加 => $"周囲の声優の獲得コインが {effectValue} 増える。",
-            EffectType.周囲の特定のキャラにコイン追加 => $"周囲の {args.Aggregate((x, y) => x + "、" + y)} の獲得コインが {effectValue} 増える。",
-            EffectType.周囲のアイテムを破壊 => $"周囲のアイテムを消す。",
-            _ => "",
-        }) 
-            + (isInstant ? "効果があった場合、このアイテムは消える。" : "");
+            return new ItemEffect(EffectType.周囲のキャラの稼ぎを倍にする, getEffectValue, Array.Empty<string>(), isInstant);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string GetDescription(string name, Main model)
+        {
+            if (name == Name.思い出のオルゴール)
+                return $"周囲の声優の稼ぎを経過年数倍にする。(アイテムの効果による獲得コインは対象外。)\nこのアイテムは2つ以上保持できない。";
+            else
+            {
+                return (Type switch
+                {
+                    EffectType.全キャラにコイン追加 => $"登場中の全声優の獲得コインが {getEffectValue(model)} 増える。",
+                    EffectType.周囲のキャラにコイン追加 => $"周囲の声優の獲得コインが {getEffectValue(model)} 増える。",
+                    EffectType.周囲の特定のキャラにコイン追加 => $"周囲の {args.Aggregate((x, y) => x + "、" + y)} の獲得コインが {getEffectValue(model)} 増える。",
+                    EffectType.周囲のアイテムを破壊 => $"周囲のアイテムを消す。",
+                    EffectType.周囲のキャラの稼ぎを倍にする => $"周囲の声優の稼ぎを {getEffectValue(model)} 倍にする。(アイテムの効果による獲得コインは対象外。)",
+                    _ => "",
+                })
+                + (isInstant ? "\n効果があった場合、このアイテムは消える。" : "");
+            }
+        }
 
         /// <summary>
         /// 
@@ -97,22 +125,23 @@ namespace CueHome.Models
         /// <param name="model"></param>
         public void Effect(Item original, int currentX, int currentY, Main model)
         {
-            var isEffected = false;
-            switch (type)
+            latestTargetItems.Clear();
+            switch (Type)
             {
                 case EffectType.全キャラにコイン追加:
                     for (var x = 0; x < Slot.XLength; ++x)
                         for (var y = 0; y < Slot.YLength; ++y)
                         {
-                            var targetCharacter = model.Slot.GetElement(x, y).CurrentItem?.Character;
+                            var targetItem = model.Slot.GetElement(x, y).CurrentItem;
+                            var targetCharacter = targetItem?.Character;
                             if (targetCharacter is not null)
                             {
-                                targetCharacter.AddPendingCoinAmount(effectValue);
-                                isEffected = true;
+                                targetCharacter.AddPendingCoinAmount(getEffectValue(model));
+                                latestTargetItems.Add(targetItem);
                             }
                         }
                     break;
-                case EffectType.周囲のマスにコイン追加:
+                case EffectType.周囲のキャラにコイン追加:
                     for (var x = currentX - 1; x <= currentX + 1; ++x)
                         for (var y = currentY - 1; y <= currentY + 1; ++y)
                         {
@@ -121,11 +150,12 @@ namespace CueHome.Models
                             if (y < 0 || y >= Slot.YLength)
                                 continue;
 
-                            var targetCharacter = model.Slot.GetElement(x, y).CurrentItem?.Character;
+                            var targetItem = model.Slot.GetElement(x, y).CurrentItem;
+                            var targetCharacter = targetItem?.Character;
                             if (targetCharacter is not null)
                             {
-                                targetCharacter.AddPendingCoinAmount(effectValue);
-                                isEffected = true;
+                                targetCharacter.AddPendingCoinAmount(getEffectValue(model));
+                                latestTargetItems.Add(targetItem);
                             }
                         }
                     break;
@@ -138,11 +168,12 @@ namespace CueHome.Models
                             if (y < 0 || y >= Slot.YLength)
                                 continue;
 
-                            var targetCharacter = model.Slot.GetElement(x, y).CurrentItem?.Character;
+                            var targetItem = model.Slot.GetElement(x, y).CurrentItem;
+                            var targetCharacter = targetItem?.Character;
                             if (targetCharacter is not null && args.Contains(targetCharacter.Name))
                             {
-                                targetCharacter.AddPendingCoinAmount(effectValue);
-                                isEffected = true;
+                                targetCharacter.AddPendingCoinAmount(getEffectValue(model));
+                                latestTargetItems.Add(targetItem);
                             }
                         }
                     break;
@@ -159,13 +190,35 @@ namespace CueHome.Models
                             if (targetItem is not null && targetItem.IsBreakable)
                             {
                                 model.ItemRepository.RemoveItem(targetItem);
-                                isEffected = true;
+                                latestTargetItems.Add(targetItem);
+                            }
+                        }
+                    break;
+                case EffectType.周囲のキャラの稼ぎを倍にする:
+                    for (var x = currentX - 1; x <= currentX + 1; ++x)
+                        for (var y = currentY - 1; y <= currentY + 1; ++y)
+                        {
+                            if (x < 0 || x >= Slot.XLength)
+                                continue;
+                            if (y < 0 || y >= Slot.YLength)
+                                continue;
+
+                            var targetItem = model.Slot.GetElement(x, y).CurrentItem;
+                            var targetCharacter = targetItem?.Character;
+                            if (targetCharacter is not null)
+                            {
+                                var actualEffectValue = targetCharacter.GetEarnings(model.Year, model.Month, model.Week) * (getEffectValue(model) - 1);
+                                if (actualEffectValue <= 0)
+                                    continue;
+
+                                targetCharacter.AddPendingCoinAmount(actualEffectValue);
+                                latestTargetItems.Add(targetItem);
                             }
                         }
                     break;
             }
 
-            if (isEffected && isInstant)
+            if (latestTargetItems.Any() && isInstant)
                 model.ItemRepository.RemoveItem(original);
         }
     }

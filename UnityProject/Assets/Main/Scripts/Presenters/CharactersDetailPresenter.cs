@@ -52,7 +52,7 @@ namespace CueHome.Presenters
         {
             gameObject.SetActive(true);
             PayButton.gameObject.SetActive(true);
-            BackButton.gameObject.SetActive(true);
+            BackButton.gameObject.SetActive(false);
 
             for (var i = 0; i < CharacterPanelPresenters.Length; i++)
                 CharacterPanelPresenters[i].UpdateCoinAmountOnPayment(model.CurrentPaymentAmount);

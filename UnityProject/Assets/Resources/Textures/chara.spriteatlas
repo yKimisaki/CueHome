@@ -68,17 +68,35 @@ SpriteAtlas:
     - {fileID: 2800000, guid: b9f1a470f5563f44886db0b635b048a7, type: 3}
     - {fileID: 2800000, guid: da15dd823f6a96a4b8e365725c90fdc6, type: 3}
     - {fileID: 2800000, guid: 22468d72911c59041903107797772fc5, type: 3}
+    - {fileID: 2800000, guid: 832343883eed4354a92ae0d2b1f34d08, type: 3}
+    - {fileID: 2800000, guid: 87db5e693e94f384fa2d3470eaaf87c6, type: 3}
+    - {fileID: 2800000, guid: d4ba43ec1c68b9c4882924da0775b919, type: 3}
+    - {fileID: 2800000, guid: 25e10d971710f704691179e78bd58718, type: 3}
+    - {fileID: 2800000, guid: c9064ec7d1e1a7448b8b0828a4368957, type: 3}
+    - {fileID: 2800000, guid: 82475889826acd243834fa8e70eb39e3, type: 3}
+    - {fileID: 2800000, guid: b3d41032c6b226a4bbef8d130608a9e6, type: 3}
+    - {fileID: 2800000, guid: 3d8828a772301ca4dbc37d3941217bd5, type: 3}
+    - {fileID: 2800000, guid: 1ea40285af8994247a74ee3f2a0a07c3, type: 3}
+    - {fileID: 2800000, guid: 8091bb4e08aa1a64293f07fe7fbb50d8, type: 3}
+    - {fileID: 2800000, guid: b4398f81cf268044f8b9dd4f358bfc86, type: 3}
+    - {fileID: 2800000, guid: 969f3f503b2078f47bb3ad7e2cb62c04, type: 3}
+    - {fileID: 2800000, guid: 7de21538258f90a4a934d0360d514084, type: 3}
+    - {fileID: 2800000, guid: 0014060fe56cee844b8a4494f418c42a, type: 3}
+    - {fileID: 2800000, guid: b47edfc86d40adc4089ff4e060113e95, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
     - 9501fa30825340b4aad5ce0cb253a87a: 21300000
+    - 969f3f503b2078f47bb3ad7e2cb62c04: 21300000
     - f0caa5606f2467541bde50a19e89dce1: 21300000
     - 7c4e9d609584ee541a62051e4ba5a19a: 21300000
     - b9f1a470f5563f44886db0b635b048a7: 21300000
     - 3e6f6481866e669459b8b5bb8c4919a7: 21300000
+    - b4398f81cf268044f8b9dd4f358bfc86: 21300000
     - a54287917b462644290b237881b6847a: 21300000
     - c7c69dc1075ba6049b59fdd36b23bdd9: 21300000
+    - b3d41032c6b226a4bbef8d130608a9e6: 21300000
     - 83c35132e3516664ea6731f91d4e8087: 21300000
     - 22468d72911c59041903107797772fc5: 21300000
     - da15dd823f6a96a4b8e365725c90fdc6: 21300000
@@ -88,35 +106,50 @@ SpriteAtlas:
     - 0075c88472fc49146806a42150bbd812: 21300000
     - 04a3be05b10b8d54ebe3428dad68639f: 21300000
     - 60d6f445ed50dc447aa0dd3822257c17: 21300000
+    - 1ea40285af8994247a74ee3f2a0a07c3: 21300000
     - 374421468ff89694abd5946225d1f12b: 21300000
     - e0eba656dbfa9464f9cfce002141e7c8: 21300000
     - a4528876213351546a711c8293ca8bb8: 21300000
     - ee6be396db0c59340af4c16e19485ddd: 21300000
     - 0d8c1b07517f3654d9416ade5cc5fca1: 21300000
     - 6b429757329639f41ae81aee47dd3178: 21300000
+    - 25e10d971710f704691179e78bd58718: 21300000
+    - 3d8828a772301ca4dbc37d3941217bd5: 21300000
     - 18bed2b7c6190fd44b6cf5bf611d5190: 21300000
+    - c9064ec7d1e1a7448b8b0828a4368957: 21300000
     - 11b6a3e7a3d895646be9b0cf351eb234: 21300000
     - 74a763f7c287be54bb3acaa52e2a438e: 21300000
+    - 7de21538258f90a4a934d0360d514084: 21300000
+    - 832343883eed4354a92ae0d2b1f34d08: 21300000
+    - b47edfc86d40adc4089ff4e060113e95: 21300000
     - e1386f49832fa1846a205d315fc10ad5: 21300000
     - 059fd359458965948b636435db906e6c: 21300000
+    - 87db5e693e94f384fa2d3470eaaf87c6: 21300000
+    - 82475889826acd243834fa8e70eb39e3: 21300000
     - 43e7b55ae783ad0478e0fd41ce72705e: 21300000
     - 72a13eca55cd08d49b4c1b37ea3029fc: 21300000
     - 581641ab083602c44827f24091eba3a3: 21300000
+    - d4ba43ec1c68b9c4882924da0775b919: 21300000
     - bccc15cd9309f5a44976b83b0bc3b24d: 21300000
     - 32bab8cd53e6b3d499c292a06095158b: 21300000
     - 3e710a1e57a15d64e8290b13e284036d: 21300000
     - fe96814e01b249646aa45ea0313f383d: 21300000
+    - 8091bb4e08aa1a64293f07fe7fbb50d8: 21300000
     - 54548bceff44b344b9af9e716f2233d6: 21300000
+    - 0014060fe56cee844b8a4494f418c42a: 21300000
     - d9c0a11fccda3d6439afaa36b32de031: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 9501fa30825340b4aad5ce0cb253a87a, type: 3}
+  - {fileID: 21300000, guid: 969f3f503b2078f47bb3ad7e2cb62c04, type: 3}
   - {fileID: 21300000, guid: f0caa5606f2467541bde50a19e89dce1, type: 3}
   - {fileID: 21300000, guid: 7c4e9d609584ee541a62051e4ba5a19a, type: 3}
   - {fileID: 21300000, guid: b9f1a470f5563f44886db0b635b048a7, type: 3}
   - {fileID: 21300000, guid: 3e6f6481866e669459b8b5bb8c4919a7, type: 3}
+  - {fileID: 21300000, guid: b4398f81cf268044f8b9dd4f358bfc86, type: 3}
   - {fileID: 21300000, guid: a54287917b462644290b237881b6847a, type: 3}
   - {fileID: 21300000, guid: c7c69dc1075ba6049b59fdd36b23bdd9, type: 3}
+  - {fileID: 21300000, guid: b3d41032c6b226a4bbef8d130608a9e6, type: 3}
   - {fileID: 21300000, guid: 83c35132e3516664ea6731f91d4e8087, type: 3}
   - {fileID: 21300000, guid: 22468d72911c59041903107797772fc5, type: 3}
   - {fileID: 21300000, guid: da15dd823f6a96a4b8e365725c90fdc6, type: 3}
@@ -126,34 +159,49 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0075c88472fc49146806a42150bbd812, type: 3}
   - {fileID: 21300000, guid: 04a3be05b10b8d54ebe3428dad68639f, type: 3}
   - {fileID: 21300000, guid: 60d6f445ed50dc447aa0dd3822257c17, type: 3}
+  - {fileID: 21300000, guid: 1ea40285af8994247a74ee3f2a0a07c3, type: 3}
   - {fileID: 21300000, guid: 374421468ff89694abd5946225d1f12b, type: 3}
   - {fileID: 21300000, guid: e0eba656dbfa9464f9cfce002141e7c8, type: 3}
   - {fileID: 21300000, guid: a4528876213351546a711c8293ca8bb8, type: 3}
   - {fileID: 21300000, guid: ee6be396db0c59340af4c16e19485ddd, type: 3}
   - {fileID: 21300000, guid: 0d8c1b07517f3654d9416ade5cc5fca1, type: 3}
   - {fileID: 21300000, guid: 6b429757329639f41ae81aee47dd3178, type: 3}
+  - {fileID: 21300000, guid: 25e10d971710f704691179e78bd58718, type: 3}
+  - {fileID: 21300000, guid: 3d8828a772301ca4dbc37d3941217bd5, type: 3}
   - {fileID: 21300000, guid: 18bed2b7c6190fd44b6cf5bf611d5190, type: 3}
+  - {fileID: 21300000, guid: c9064ec7d1e1a7448b8b0828a4368957, type: 3}
   - {fileID: 21300000, guid: 11b6a3e7a3d895646be9b0cf351eb234, type: 3}
   - {fileID: 21300000, guid: 74a763f7c287be54bb3acaa52e2a438e, type: 3}
+  - {fileID: 21300000, guid: 7de21538258f90a4a934d0360d514084, type: 3}
+  - {fileID: 21300000, guid: 832343883eed4354a92ae0d2b1f34d08, type: 3}
+  - {fileID: 21300000, guid: b47edfc86d40adc4089ff4e060113e95, type: 3}
   - {fileID: 21300000, guid: e1386f49832fa1846a205d315fc10ad5, type: 3}
   - {fileID: 21300000, guid: 059fd359458965948b636435db906e6c, type: 3}
+  - {fileID: 21300000, guid: 87db5e693e94f384fa2d3470eaaf87c6, type: 3}
+  - {fileID: 21300000, guid: 82475889826acd243834fa8e70eb39e3, type: 3}
   - {fileID: 21300000, guid: 43e7b55ae783ad0478e0fd41ce72705e, type: 3}
   - {fileID: 21300000, guid: 72a13eca55cd08d49b4c1b37ea3029fc, type: 3}
   - {fileID: 21300000, guid: 581641ab083602c44827f24091eba3a3, type: 3}
+  - {fileID: 21300000, guid: d4ba43ec1c68b9c4882924da0775b919, type: 3}
   - {fileID: 21300000, guid: bccc15cd9309f5a44976b83b0bc3b24d, type: 3}
   - {fileID: 21300000, guid: 32bab8cd53e6b3d499c292a06095158b, type: 3}
   - {fileID: 21300000, guid: 3e710a1e57a15d64e8290b13e284036d, type: 3}
   - {fileID: 21300000, guid: fe96814e01b249646aa45ea0313f383d, type: 3}
+  - {fileID: 21300000, guid: 8091bb4e08aa1a64293f07fe7fbb50d8, type: 3}
   - {fileID: 21300000, guid: 54548bceff44b344b9af9e716f2233d6, type: 3}
+  - {fileID: 21300000, guid: 0014060fe56cee844b8a4494f418c42a, type: 3}
   - {fileID: 21300000, guid: d9c0a11fccda3d6439afaa36b32de031, type: 3}
   m_PackedSpriteNamesToIndex:
   - gold_photo
+  - hobby
   - pc_parts
   - shiho
   - sake
   - yuki
+  - camera
   - masaki
   - rie
+  - uniform
   - riko
   - yakuroto
   - stick
@@ -163,25 +211,37 @@ SpriteAtlas:
   - rinne
   - rio
   - miharu
+  - gameboy
   - kameisan
   - inarizusi
   - ketchup
   - mahoro
   - yuzuha
   - chisa
+  - bath_solt
+  - omamori
   - satori
+  - lunch_box
   - rainbow_photo
   - kirika
+  - novel
+  - music_box
+  - rp_candy
   - honey_ginger_tea
   - aya
+  - meat
+  - dictionary
   - mei
   - airi
   - dice
+  - ramen
   - maika
   - radio_mic
   - reset_hammer
   - haruna
+  - sneaker
   - azarasi
+  - grass
   - honoka
   m_RenderDataMap: {}
   m_Tag: chara

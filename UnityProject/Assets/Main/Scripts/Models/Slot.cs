@@ -45,7 +45,7 @@ namespace CueHome.Models
                 for (int y = 0; y < 4; ++y)
                     slotElements[x, y].Initialize(x + y * 4);
 
-            for (int y = 0; y < 3; ++y)
+            for (int y = 0; y < 4; ++y)
                 slotElements[4, y].Initialize(16 + y);
         }
 
@@ -54,11 +54,13 @@ namespace CueHome.Models
         /// </summary>
         public void LotAll()
         {
-            var xs = Enumerable.Range(0, XLength).OrderBy(_ => Random.Range(0, int.MaxValue)).ToArray();
-            var ys = Enumerable.Range(0, YLength).OrderBy(_ => Random.Range(0, int.MaxValue)).ToArray();
-            for (int x = 0; x < xs.Length; x++)
-                for (int y = 0; y < ys.Length; ++y)
-                    slotElements[xs[x], ys[y]].Lot();
+            var coordinate = Enumerable.Range(0, 25).OrderBy(_ => Random.Range(0, int.MaxValue)).ToArray();
+            for (int i = 0; i < coordinate.Length; i++)
+            {
+                var x = coordinate[i] / 5;
+                var y = coordinate[i] % 5;
+                slotElements[x, y].Lot();
+            }
 
             for (int x = 0; x < XLength; x++)
                 for (int y = 0; y < YLength; ++y)

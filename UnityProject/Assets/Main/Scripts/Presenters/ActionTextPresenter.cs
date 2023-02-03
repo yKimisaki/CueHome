@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace CueHome.Presenters
 {
@@ -7,6 +8,10 @@ namespace CueHome.Presenters
     /// </summary>
     public class ActionTextPresenter : MonoBehaviour
     {
+        public TMP_Text Text;
+
+        public string text { set => Text.text = value; }
+
         /// <summary>
         /// 
         /// </summary>

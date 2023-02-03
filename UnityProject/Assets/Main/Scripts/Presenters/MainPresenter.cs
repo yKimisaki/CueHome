@@ -20,6 +20,8 @@ namespace CueHome.Presenters
         public RenewalPresenter RenewalPresenter;
         public PinchPresenter[] PinchPresenters;
 
+        public DescriptionPresenter DescriptionPresenter;
+
         public GameObject Advice;
         public GameObject GameOver;
 
@@ -37,7 +39,7 @@ namespace CueHome.Presenters
             model = _model;
             model.Initialize();
 
-            SlotPresenter.Initialize(model.Slot);
+            SlotPresenter.Initialize(model.Slot, model.ItemRepository, (arg1, arg2) => DescriptionPresenter.Open(model, arg1, arg2), DescriptionPresenter.Close);
             CharactersDetailPresenter.Initialize(model, () =>
             {
                 UpdatePinchs();

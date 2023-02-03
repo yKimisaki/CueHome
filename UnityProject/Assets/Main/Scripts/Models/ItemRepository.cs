@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CueHome.Data;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace CueHome.Models
     /// </summary>
     public class ItemRepository
     {
+        private Main model;
+
         /// <summary>
         /// すべての声優
         /// </summary>
@@ -27,12 +30,12 @@ namespace CueHome.Models
         /// </summary>
         /// <param name="characters"></param>
         /// <param name="_defaultItems"></param>
-        public ItemRepository(IReadOnlyList<Character> characters, IEnumerable<Item> _defaultItems)
-        { 
-            AllCharacters = characters
-                .Select(x => new Item(x))
-                .ToArray();
-            DefaultItems = _defaultItems.ToArray();
+        public ItemRepository(Main _model)
+        {
+            model = _model;
+
+            AllCharacters = model.Characters.Select(x => new Item(x)).ToArray();
+            DefaultItems = model.Items.Take(4).ToArray();
         }
 
         /// <summary>
@@ -52,7 +55,13 @@ namespace CueHome.Models
         {
             additionalItems.Remove(item);
         }
-        
+
+        /// <summary>
+        /// アイテムを所持しているかを確認します。
+        /// </summary>
+        /// <param name="item"></param>
+        public bool HasItem(Item item) => CurrentAllItems.Contains(item);
+
         /// <summary>
         /// ボックスからアイテムを引きます。
         /// </summary>
@@ -73,11 +82,13 @@ namespace CueHome.Models
         /// </summary>
         public void ResetBox()
         {
-            itemBox = AllCharacters
-                .Where(x => !x.Character.IsRetired)
-                .Concat(DefaultItems)
-                .Concat(additionalItems)
-                .ToList();
+            itemBox = CurrentAllItems.ToList();
         }
+
+        private IEnumerable<Item> CurrentAllItems =>
+            AllCharacters
+                .Where(x => !x.Character.IsRetired)
+                .Concat(DefaultItems.Where(x => x.Name != Name.由良桐香 || model.Year < 3))
+                .Concat(additionalItems);
     }
 }

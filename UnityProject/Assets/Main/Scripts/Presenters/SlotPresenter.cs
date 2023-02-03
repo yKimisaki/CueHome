@@ -1,6 +1,7 @@
 ﻿using CueHome.Models;
-using TMPro;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace CueHome.Presenters
 {
@@ -20,12 +21,12 @@ namespace CueHome.Presenters
         /// 
         /// </summary>
         /// <param name="_model"></param>
-        public void Initialize(Slot _model)
+        public void Initialize(Slot _model, ItemRepository repository, UnityAction<Item, RectTransform> onOpenDesctiption, UnityAction onCloseDescription)
         {
             model = _model;
 
             foreach (var slotElement in SlotElements)
-                slotElement.Initialize(model.GetElement(slotElement.X, slotElement.Y));
+                slotElement.Initialize(model.GetElement(slotElement.X, slotElement.Y), repository, onOpenDesctiption, onCloseDescription);
 
             foreach (var slotElement in SlotElements)
                 slotElement.UpdateItemImage();
@@ -39,7 +40,11 @@ namespace CueHome.Presenters
             foreach (var slotElement in SlotElements)
             {
                 slotElement.UpdateItemImage();
+
                 slotElement.ShowEffectedAmountAction();
+
+                if (slotElement.LatestTargetItems.Any())
+                    slotElement.ShowEffectAction();
             }
         }
     }

@@ -37,11 +37,11 @@ namespace CueHome.Presenters
             var items = model.Items
                 .Where(x => x.IsReward)
                 .OrderBy(x => Random.Range(0, int.MaxValue))
-                .Take(ItemPresenters.Length)
-                .ToArray();
+                .GroupBy(x => x.Group)
+                .ToDictionary(x => x.Key, x => x.FirstOrDefault());
 
             for (var i = 0; i < ItemPresenters.Length; i++)
-                ItemPresenters[i].Open(items[i]);
+                ItemPresenters[i].Open(model, items[i + 1]);
         }
 
         /// <summary>

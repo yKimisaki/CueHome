@@ -38,6 +38,7 @@ namespace CueHome.Data
             {Name.鳳真咲, "Textures/masaki"},
             {Name.由良桐香, "Textures/kirika"},
             {Name.五十鈴りお, "Textures/rio"},
+            {Name.思い出のオルゴール, "Textures/music_box"},
 
             {Name.あざらし, "Textures/azarasi"},
             {Name.サイコロ, "Textures/dice"},
@@ -50,6 +51,7 @@ namespace CueHome.Data
             {Name.ケチャップ, "Textures/ketchup"},
             {Name.黒猫, "Textures/kuroneko"},
             {Name.LPゼリー, "Textures/lp_gerry"},
+            {Name.RPのど飴, "Textures/rp_candy"},
             {Name.PCパーツ, "Textures/pc_parts"},
             {Name.ラジオマイク, "Textures/radio_mic"},
             {Name.虹フォト, "Textures/rainbow_photo"},
@@ -57,6 +59,19 @@ namespace CueHome.Data
             {Name.晩酌, "Textures/sake"},
             {Name.ステッキ, "Textures/stick"},
             {Name.ヤクロト, "Textures/yakuroto"},
+            {Name.お肉, "Textures/meat"},
+            {Name.ラーメン, "Textures/ramen"},
+            {Name.入浴剤, "Textures/bath_solt"},
+            {Name.お弁当, "Textures/lunch_box"},
+            {Name.英英辞書, "Textures/dictionary"},
+            {Name.喫茶店の制服, "Textures/uniform"},
+            {Name.お守り, "Textures/omamori"},
+            {Name.ゲーム機, "Textures/gameboy"},
+            {Name.スニーカー, "Textures/sneaker"},
+            {Name.カメラ, "Textures/camera"},
+            {Name.おもちゃ, "Textures/hobby"},
+            {Name.小説, "Textures/novel"},
+            {Name.めがね, "Textures/grass"},
         };
     }
 }

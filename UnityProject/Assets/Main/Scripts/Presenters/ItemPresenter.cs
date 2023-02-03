@@ -36,11 +36,11 @@ namespace CueHome.Presenters
         /// 
         /// </summary>
         /// <param name="item"></param>
-        public void Open(Item item)
+        public void Open(Main model, Item item)
         {
             IconImage.sprite = Resources.Load<Sprite>(IconPath.ItemByName[item.Name]);
             NameText.text = item.Name;
-            DescriptionText.text = item.Effect.Description;
+            DescriptionText.text = item.Effect.GetDescription(item.Name, model);
 
             currentItem = item;
         }

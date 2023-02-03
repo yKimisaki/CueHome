@@ -31,6 +31,7 @@ namespace CueHome.Data
         public const string 鳳真咲 = nameof(鳳真咲);
         public const string 由良桐香 = nameof(由良桐香);
         public const string 五十鈴りお = nameof(五十鈴りお);
+        public const string 思い出のオルゴール = nameof(思い出のオルゴール);
 
         public const string あざらし = nameof(あざらし);
         public const string サイコロ = nameof(サイコロ);
@@ -43,6 +44,7 @@ namespace CueHome.Data
         public const string ケチャップ = nameof(ケチャップ);
         public const string 黒猫 = nameof(黒猫);
         public const string LPゼリー = nameof(LPゼリー);
+        public const string RPのど飴 = nameof(RPのど飴);
         public const string PCパーツ = nameof(PCパーツ);
         public const string ラジオマイク = nameof(ラジオマイク);
         public const string 虹フォト = nameof(虹フォト);
@@ -50,5 +52,18 @@ namespace CueHome.Data
         public const string 晩酌 = nameof(晩酌);
         public const string ステッキ = nameof(ステッキ);
         public const string ヤクロト = nameof(ヤクロト);
+        public const string お肉 = nameof(お肉);
+        public const string ラーメン = nameof(ラーメン);
+        public const string 入浴剤 = nameof(入浴剤);
+        public const string お弁当 = nameof(お弁当);
+        public const string 英英辞書 = nameof(英英辞書);
+        public const string 喫茶店の制服 = nameof(喫茶店の制服);
+        public const string お守り = nameof(お守り);
+        public const string ゲーム機 = nameof(ゲーム機);
+        public const string スニーカー = nameof(スニーカー);
+        public const string カメラ = nameof(カメラ);
+        public const string おもちゃ = nameof(おもちゃ);
+        public const string 小説 = nameof(小説);
+        public const string めがね = nameof(めがね);
     }
 }
